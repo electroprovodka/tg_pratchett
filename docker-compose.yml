@@ -1,0 +1,19 @@
+version: '3.8'
+
+services:
+  pratchett-bot:
+    container_name: pratchett-bot
+    image: pratchett-bot:latest
+    restart: on-failure
+    volumes:
+      - .:/usr/src/app
+    env_file: .env
+    networks:
+      ipv6net:
+
+networks:
+  ipv6net:
+    enable_ipv6: true
+    ipam:
+      config:
+        - subnet: 2001:0DB8::/112

@@ -1,8 +1,5 @@
 FROM python:3.12-slim
 
-ARG TELEGRAM_API_KEY
-ENV TELEGRAM_API_KEY=${TELEGRAM_API_KEY}
-
 # Set the working directory in the container
 WORKDIR /usr/src/app
 

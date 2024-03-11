@@ -1,0 +1,1 @@
+rsync -avz --exclude-from='.gitignore' --exclude='.env' --exclude=".git" . hetzner-pratchett:~/app
