@@ -1,0 +1,1 @@
+export $(cat .env | xargs) && docker build --build-arg username=$TELEGRAM_API_KEY -t pratchett-bot .
