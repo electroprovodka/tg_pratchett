@@ -11,6 +11,8 @@ logging.basicConfig(
     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
     level=logging.INFO
 )
+# set higher logging level for httpx to avoid all GET and POST requests being logged
+logging.getLogger("httpx").setLevel(logging.WARNING)
 
 logger = logging.getLogger(__name__)
 
@@ -81,7 +83,7 @@ def _now() -> datetime:
 def is_today(dt: str) -> bool:
     now = _now()
     d = datetime.fromisoformat(dt)
-    return d.date() <= now.date()
+    return now.date() == d.date()
 
 
 def mark_as_seen(user_id: str, quote_id: str) -> None:
@@ -159,8 +161,3 @@ if __name__ == "__main__":
     application.add_handler(random_message_handler)
 
     application.run_polling()
-
-
-# TODO: reply to random messages
-# - Prerecorded quote
-# - chatgpt
